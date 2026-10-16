@@ -772,7 +772,9 @@ client_task (void *pvParameters)
                   .clientkey_buf = handle->our_key_buf,
                   .clientkey_bytes = handle->our_key_bytes,
                   .crt_bundle_attach = handle->crt_bundle_attach,
+#ifndef CONFIG_IDF_TARGET_ESP8266
                   .addr_family = (ip6 ? ESP_TLS_AF_INET6 : ESP_TLS_AF_INET),
+#endif
                };
                tls = esp_tls_init ();
                if (esp_tls_conn_new_sync (hostname, strlen (hostname), port, &cfg, tls) != 1)
