@@ -26,7 +26,9 @@
 #include "lwip/dns.h"
 #include "lwip/netdb.h"
 
-#include "esp_app_desc.h"
+#ifndef CONFIG_IDF_TARGET_ESP8266
+#include "esp_app_desc.h"       // ESP32 only; on ESP8266 esp_app_desc_t is in esp_app_format.h
+#endif
 #include "esp_log.h"
 #ifdef	CONFIG_REVK_MQTT
 #include "lwmqtt.h"
